@@ -1,41 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const TicketsSection = ({ handleTicketClick, taskStatus, setTaskStatus }) => {
-  const [tickets, setTickets] = useState([]);
-  const [resolvedTasks, setResolvedTasks] = useState([]);
-
-  const fetchTickets = async () => {
-    try {
-      const res = await fetch("/public/Ticekts.json");  
-      const data = await res.json();
-      setTickets(data);
-    } catch (error) {
-      console.error("Error fetching tickets:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchTickets();
-  }, []);
-
-  const handleComplete = (title) => {
-    setTaskStatus((prev) => prev.filter((t) => t !== title));
-    setResolvedTasks((prev) => [...prev, title]);
-  };
-
+const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick, handleComplete }) => {
   return (
     <div className="flex px-6 py-10 gap-4">
-      {/* Left Side - 60% */}
+      {/* Left Side - Tickets */}
       <div className="w-3/5 grid grid-cols-1 md:grid-cols-2 gap-4">
         {tickets.length === 0 ? (
-          <p className="text-gray-500">Loading tickets...</p>
+          <p className="text-gray-500">No tickets available</p>
         ) : (
-          tickets.map((ticket) => (
+          tickets.map(ticket => (
             <div
               key={ticket.id}
-              onClick={() => {
-                if (!taskStatus.includes(ticket.title)) handleTicketClick(ticket.title)
-              }}
+              onClick={() => handleTicketClick(ticket.title)}
               className="bg-white shadow-md rounded-lg p-4 border border-gray-200 cursor-pointer hover:shadow-lg transition"
             >
               <h3 className="text-base font-semibold mb-1">{ticket.title}</h3>
@@ -76,8 +52,9 @@ const TicketsSection = ({ handleTicketClick, taskStatus, setTaskStatus }) => {
         )}
       </div>
 
-      {/* Right Side - 20% */}
-      <div className="w-1/5 flex flex-col gap-4">
+      {/* Right Side - Task Status & Resolved */}
+      <div className="w-2/5 flex flex-col gap-4">
+        {/* Task Status */}
         <div className="bg-white shadow-md rounded-lg p-4">
           <h3 className="text-lg font-semibold mb-2">Task Status</h3>
           {taskStatus.length === 0 ? (
@@ -97,22 +74,25 @@ const TicketsSection = ({ handleTicketClick, taskStatus, setTaskStatus }) => {
           )}
         </div>
 
+        {/* Resolved Tasks */}
         <div className="bg-white shadow-md rounded-lg p-4">
           <h3 className="text-lg font-semibold mb-2">Resolved Task</h3>
           {resolvedTasks.length === 0 ? (
             <p className="text-sm text-gray-500">No resolved tasks yet.</p>
           ) : (
-            resolvedTasks.map((title, index) => (
-              <p key={index} className="text-sm text-gray-500 mt-1">
-                {title}
-              </p>
-            ))
+            <div className="flex flex-col gap-2">
+              {resolvedTasks.map((title, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-100 text-gray-700 text-sm px-2 py-1 rounded"
+                >
+                  {title}
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
-
-      {/* Remaining 20% for spacing */}
-      <div className="w-1/5"></div>
     </div>
   );
 };
