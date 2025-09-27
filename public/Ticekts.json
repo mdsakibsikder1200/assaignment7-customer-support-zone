@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "title": "Login not working",
-    "description": "Customer unable to login with valid credentials.",
-    "customer": "John Doe",
+    "title": "Login Issues - Can't Access Account",
+    "description": "Customer is unable to log in to their account. They've tried resetting their password multiple times but still...",
+    "customer": "John Smith",
     "priority": "High",
-    "status": "In-Progress",
+    "status": "Open",
     "createdAt": "2025-09-20T09:15:00Z"
   },
   {
     "id": 2,
-    "title": "Payment gateway error",
-    "description": "Transaction fails with error code 502.",
+    "title": "Payment Failed - Card Declined",
+    "description": "Customer attempted to pay using Visa ending 1234 but the payment keeps failing despite sufficient balance.",
     "customer": "Sarah Ali",
     "priority": "High",
     "status": "Pending",

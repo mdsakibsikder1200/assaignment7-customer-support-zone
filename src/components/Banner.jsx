@@ -1,14 +1,17 @@
 import React from "react";
 import Vector1 from "../assets/vector1.png";
+ 
 
 const Banner = ({ inProgressCount, resolvedCount }) => {
   return (
     <div
       className="w-full py-10 px-6 flex justify-center bg-cover bg-center"
       style={{ backgroundImage: `url("${Vector1}")` }}
+      
     >
+      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full">
-        {/* In-Progress Card */}
+         
         <div
           className="rounded-lg p-8 text-center text-white shadow-md"
           style={{ background: "linear-gradient(135deg, #7C3AED, #9333EA)" }}
@@ -17,7 +20,7 @@ const Banner = ({ inProgressCount, resolvedCount }) => {
           <p className="text-4xl font-bold">{inProgressCount}</p>
         </div>
 
-        {/* Resolved Card */}
+         
         <div
           className="rounded-lg p-8 text-center text-white shadow-md"
           style={{ background: "linear-gradient(135deg, #10B981, #047857)" }}

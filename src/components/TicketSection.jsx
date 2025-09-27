@@ -2,9 +2,12 @@ import React from "react";
 
 const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick, handleComplete }) => {
   return (
-    <div className="flex px-6 py-10 gap-4">
-      {/* Left Side - Tickets */}
-      <div className="w-3/5 grid grid-cols-1 md:grid-cols-2 gap-4">
+    
+     <div>
+      <h1 className=" ml-62 font-bold text-2xl justify-between items-center  ">Customer Tickets</h1>
+      <div className="flex px-6 py-10 gap-4">
+        
+      <div className=" mx-auto ml-55 grid grid-cols-1 md:grid-cols-2 gap-4">
         {tickets.length === 0 ? (
           <p className="text-gray-500">No tickets available</p>
         ) : (
@@ -21,7 +24,7 @@ const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick,
                 <span
                   className={`px-2 py-1 rounded-full text-xs font-medium ${
                     ticket.priority === "High"
-                      ? "bg-red-100 text-red-600"
+                      ? " text-red-600"
                       : ticket.priority === "Medium"
                       ? "bg-yellow-100 text-yellow-600"
                       : "bg-green-100 text-green-600"
@@ -52,13 +55,13 @@ const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick,
         )}
       </div>
 
-      {/* Right Side - Task Status & Resolved */}
-      <div className="w-2/5 flex flex-col gap-4">
-        {/* Task Status */}
+       
+      <div className="w-[350px] flex flex-col gap-4 mr-55 ">
+         
         <div className="bg-white shadow-md rounded-lg p-4">
           <h3 className="text-lg font-semibold mb-2">Task Status</h3>
           {taskStatus.length === 0 ? (
-            <p className="text-sm text-gray-600">Select a ticket to add to Task Status</p>
+            <p className="text-sm gap-4 text-gray-600">Select a ticket to add to Task Status</p>
           ) : (
             taskStatus.map((title, index) => (
               <div key={index} className="mb-2">
@@ -74,7 +77,7 @@ const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick,
           )}
         </div>
 
-        {/* Resolved Tasks */}
+         
         <div className="bg-white shadow-md rounded-lg p-4">
           <h3 className="text-lg font-semibold mb-2">Resolved Task</h3>
           {resolvedTasks.length === 0 ? (
@@ -94,6 +97,7 @@ const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick,
         </div>
       </div>
     </div>
+     </div>
   );
 };
 
