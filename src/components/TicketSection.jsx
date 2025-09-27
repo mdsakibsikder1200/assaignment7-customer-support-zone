@@ -26,8 +26,8 @@ const TicketsSection = ({ tickets, taskStatus, resolvedTasks, handleTicketClick,
                     ticket.priority === "High"
                       ? " text-red-600"
                       : ticket.priority === "Medium"
-                      ? "bg-yellow-100 text-yellow-600"
-                      : "bg-green-100 text-green-600"
+                      ? " text-yellow-600"
+                      : " text-green-600"
                   }`}
                 >
                   {ticket.priority} Priority
